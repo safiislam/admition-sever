@@ -65,6 +65,13 @@ async function run() {
       const result = await admissionCollection.insertOne(bodyData);
       res.send(result);
     });
+    app.get('/admission',async (req,res)=>{
+      const email = req.query.email
+      console.log(email)
+      const query = {email : email}
+      const result = await admissionCollection.findOne(query)
+      res.send(result)
+    })
     app.get("/myCollege", async (req, res) => {
       const email = req.query.email;
       const query = { email: email };
